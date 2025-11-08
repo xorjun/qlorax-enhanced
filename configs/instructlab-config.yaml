@@ -1,0 +1,240 @@
+# InstructLab Configuration for QLORAX Integration
+# This configuration manages synthetic data generation and knowledge injection
+
+general:
+  log_level: INFO
+  project_name: "QLORAX-InstructLab"
+  workspace_root: "."
+  
+# Data generation settings
+data_generation:
+  # Model for generating synthetic data
+  model_name: "microsoft/DialoGPT-medium"
+  
+  # Generation parameters
+  num_samples: 100
+  batch_size: 10
+  max_length: 512
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  
+  # Quality control
+  min_input_length: 10
+  min_output_length: 20
+  max_input_length: 1024
+  max_output_length: 2048
+  
+  # Diversity settings
+  diversity_penalty: 0.1
+  repetition_penalty: 1.1
+  
+# Taxonomy configuration
+taxonomy:
+  base_path: "instructlab/taxonomy"
+  
+  # Default domains for taxonomy creation
+  domains:
+    - general
+    - technical
+    - conversational
+    - machine_learning
+    - software_engineering
+    - data_science
+  
+  # Knowledge areas for specialized data generation
+  knowledge_areas:
+    machine_learning:
+      - supervised_learning
+      - unsupervised_learning
+      - reinforcement_learning
+      - deep_learning
+      - model_evaluation
+    
+    fine_tuning:
+      - parameter_efficient_tuning
+      - qlora_methodology
+      - lora_techniques
+      - model_optimization
+      - training_strategies
+    
+    deployment:
+      - model_serving
+      - api_development
+      - containerization
+      - monitoring
+      - scaling
+  
+  # Seed examples for bootstrapping
+  seed_examples:
+    - question: "What is machine learning?"
+      answer: "Machine learning is a subset of artificial intelligence that enables computers to learn from data without explicit programming."
+      domain: "machine_learning"
+    
+    - question: "How does QLoRA improve fine-tuning efficiency?"
+      answer: "QLoRA uses 4-bit quantization and low-rank adapters to significantly reduce memory usage while maintaining fine-tuning performance."
+      domain: "fine_tuning"
+    
+    - question: "What are the benefits of parameter-efficient fine-tuning?"
+      answer: "Parameter-efficient fine-tuning reduces computational requirements, enables faster training, and makes fine-tuning accessible on consumer hardware."
+      domain: "fine_tuning"
+
+# Knowledge injection settings
+knowledge:
+  # Knowledge sources
+  sources:
+    documents:
+      - "docs/"
+      - "README.md"
+      - "*.md"
+    
+    code_files:
+      - "scripts/"
+      - "configs/"
+    
+    data_files:
+      - "data/curated.jsonl"
+  
+  # Knowledge extraction
+  chunk_size: 512
+  overlap: 50
+  max_chunks: 100
+  
+  # Knowledge validation
+  validate_sources: true
+  min_knowledge_quality: 0.7
+
+# Training integration
+training:
+  # Data mixing strategy
+  merge_with_existing: true
+  existing_data_weight: 0.7
+  synthetic_data_weight: 0.3
+  
+  # Enhanced training parameters
+  enable_knowledge_injection: true
+  knowledge_weight: 0.2
+  
+  # Data augmentation
+  augmentation_ratio: 0.2
+  paraphrasing_enabled: true
+  
+  # Quality filtering
+  filter_low_quality: true
+  quality_threshold: 0.6
+  similarity_threshold: 0.9  # Remove near-duplicates
+
+# Output configuration
+output:
+  # Directory structure
+  data_dir: "data/instructlab_generated"
+  taxonomy_dir: "instructlab/taxonomy"
+  knowledge_dir: "instructlab/knowledge"
+  models_dir: "instructlab/models"
+  
+  # File naming
+  combined_data_file: "data/qlorax_instructlab_combined.jsonl"
+  synthetic_data_prefix: "synthetic_data"
+  knowledge_taxonomy_prefix: "knowledge"
+  
+  # Backup and versioning
+  create_backups: true
+  version_files: true
+  max_backups: 5
+
+# Model serving (for InstructLab integration)
+serving:
+  # Local serving configuration
+  host: "127.0.0.1"
+  port: 8001
+  workers: 1
+  
+  # Model configuration
+  model_path: "./models/tinyllama-qlora"
+  device: "auto"
+  quantization: "4bit"
+  
+  # Generation parameters
+  default_max_tokens: 256
+  default_temperature: 0.7
+  default_top_p: 0.9
+
+# Evaluation and metrics
+evaluation:
+  # Metrics to compute
+  metrics:
+    - "bleu"
+    - "rouge"
+    - "bert_score"
+    - "perplexity"
+  
+  # Evaluation datasets
+  test_data_path: "data/test_data.jsonl"
+  validation_split: 0.1
+  
+  # Quality assessment
+  assess_diversity: true
+  assess_coherence: true
+  assess_relevance: true
+  
+  # Comparison with baseline
+  baseline_model: null
+  compare_with_baseline: false
+
+# Logging and monitoring
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # File logging
+  log_to_file: true
+  log_file: "logs/instructlab_integration.log"
+  max_log_size: "10MB"
+  backup_count: 5
+  
+  # Progress tracking
+  progress_bar: true
+  detailed_progress: true
+  
+  # Metrics logging
+  log_metrics: true
+  metrics_file: "logs/instructlab_metrics.jsonl"
+
+# Development and debugging
+development:
+  debug_mode: false
+  verbose_logging: false
+  
+  # Testing and validation
+  dry_run: false
+  validate_config: true
+  
+  # Performance
+  profile_execution: false
+  measure_memory: false
+  
+  # Reproducibility
+  random_seed: 42
+  deterministic: true
+
+# Advanced features
+advanced:
+  # Experimental features
+  enable_experimental: false
+  
+  # Custom data generators
+  custom_generators:
+    enabled: false
+    generator_paths: []
+  
+  # Integration hooks
+  pre_generation_hook: null
+  post_generation_hook: null
+  pre_training_hook: null
+  post_training_hook: null
+  
+  # Distributed generation (for large-scale deployments)
+  distributed:
+    enabled: false
+    num_workers: 1
+    backend: "multiprocessing"

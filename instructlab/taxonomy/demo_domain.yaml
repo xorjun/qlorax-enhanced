@@ -1,0 +1,21 @@
+version: 1
+domain: demo_domain
+created_by: QLORAX
+description: Custom taxonomy for demo_domain domain knowledge
+seed_examples:
+- question: What is machine learning?
+  answer: Machine learning is a subset of artificial intelligence that enables computers
+    to learn from data without explicit programming.
+- question: Explain QLoRA fine-tuning
+  answer: QLoRA (Quantized Low-Rank Adaptation) is an efficient fine-tuning method
+    that uses 4-bit quantization and low-rank adapters to reduce memory usage while
+    maintaining performance.
+- question: How does parameter-efficient fine-tuning work?
+  answer: Parameter-efficient fine-tuning methods like LoRA only update a small subset
+    of model parameters, making fine-tuning faster and more memory-efficient while
+    preserving model capabilities.
+knowledge_areas:
+- machine_learning_fundamentals
+- fine_tuning_techniques
+- model_optimization
+- deep_learning_concepts
