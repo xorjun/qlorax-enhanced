@@ -12,7 +12,7 @@ evaluate==0.4.1
 
 # Fine-tuning and Parameter Efficient Training
 peft==0.6.2
-bitsandbytes==0.41.3.post2
+bitsandbytes==0.47.0
 scipy==1.11.4
 
 # Axolotl - QLoRA fine-tuning framework
