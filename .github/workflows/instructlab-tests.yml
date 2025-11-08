@@ -62,6 +62,8 @@ jobs:
         run: |
           echo "🧪 Testing taxonomy creation..."
           python -c "
+          import sys
+          sys.path.append('.')
           from scripts.instructlab_integration import QLORAXInstructLab
           instructlab = QLORAXInstructLab()
           taxonomy_file = instructlab.create_taxonomy_structure('${{ github.event.inputs.test_domain || 'test_domain' }}')
@@ -80,6 +82,8 @@ jobs:
         run: |
           echo "✅ Testing data validation..."
           python -c "
+          import sys
+          sys.path.append('.')
           from scripts.instructlab_integration import QLORAXInstructLab
           from pathlib import Path
           
@@ -98,6 +102,8 @@ jobs:
         run: |
           echo "🔗 Testing data integration..."
           python -c "
+          import sys
+          sys.path.append('.')
           from scripts.instructlab_integration import QLORAXInstructLab
           from pathlib import Path
           
@@ -165,6 +171,8 @@ jobs:
       - name: 🔬 Mock Data Generation Test
         run: |
           python -c "
+          import sys
+          sys.path.append('.')
           from scripts.instructlab_integration import QLORAXInstructLab
           instructlab = QLORAXInstructLab()
           result = instructlab._generate_mock_data(5)

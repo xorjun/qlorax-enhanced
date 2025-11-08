@@ -76,6 +76,8 @@ jobs:
         SAMPLES="${{ github.event.inputs.num_samples || '25' }}"
         
         python -c "
+        import sys
+        sys.path.append('.')
         from scripts.instructlab_integration import QLORAXInstructLab
         import os
         
