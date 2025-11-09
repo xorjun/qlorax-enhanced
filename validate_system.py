@@ -4,12 +4,13 @@ QLORAX System Validation & Error Detection Script
 Comprehensive check for potential issues
 """
 
+import importlib
+import json
 import os
 import sys
-import json
-import yaml
-import importlib
 from pathlib import Path
+
+import yaml
 
 
 def check_environment():
@@ -31,6 +32,7 @@ def check_dependencies():
     """Check all required dependencies"""
     print("\n📦 Checking Dependencies...")
 
+    # Core packages required for training
     required_packages = [
         "torch",
         "transformers",
@@ -40,12 +42,18 @@ def check_dependencies():
         "wandb",
         "numpy",
         "matplotlib",
-        "seaborn",
         "sklearn",
         "tqdm",
     ]
+    
+    # Optional packages (nice to have but not critical)
+    optional_packages = [
+        "seaborn",
+    ]
 
     missing_packages = []
+    
+    # Check required packages
     for package in required_packages:
         try:
             # Special handling for sklearn (scikit-learn)
@@ -57,12 +65,25 @@ def check_dependencies():
         except ImportError:
             print(f"   ❌ {package}")
             missing_packages.append(package)
+    
+    # Check optional packages (warnings only)
+    missing_optional = []
+    for package in optional_packages:
+        try:
+            importlib.import_module(package)
+            print(f"   ✅ {package}")
+        except ImportError:
+            print(f"   ⚠️ {package} (optional)")
+            missing_optional.append(package)
 
     if missing_packages:
-        print(f"\n⚠️  Missing packages: {missing_packages}")
+        print(f"\n⚠️  Missing required packages: {missing_packages}")
         return False
 
-    print("   ✅ All required packages available")
+    success_msg = "✅ All required packages available"
+    if missing_optional:
+        success_msg += f" (optional missing: {missing_optional})"
+    print(f"   {success_msg}")
     return True
 
 
@@ -310,8 +331,8 @@ def run_simple_test():
 
     try:
         # Test basic imports
-        from transformers import AutoTokenizer
         import torch
+        from transformers import AutoTokenizer
 
         # Test tokenizer
         tokenizer = AutoTokenizer.from_pretrained("gpt2")  # Smaller model for testing

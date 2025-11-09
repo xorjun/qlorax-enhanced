@@ -4,16 +4,16 @@
 Automated model publishing and artifact management for CI/CD pipeline
 """
 
-import os
+import argparse
 import json
 import logging
-import argparse
-from pathlib import Path
-from typing import Dict, List, Optional, Any
+import os
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 try:
-    from huggingface_hub import HfApi, create_repo, upload_folder, hf_hub_download
+    from huggingface_hub import HfApi, create_repo, hf_hub_download, upload_folder
     from huggingface_hub.utils import RepositoryNotFoundError
 
     HF_AVAILABLE = True

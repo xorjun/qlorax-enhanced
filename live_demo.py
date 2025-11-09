@@ -4,11 +4,11 @@
 Step-by-step demonstration with commentary
 """
 
-import os
 import json
+import os
 import time
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 
 
 def print_header(title, char="="):

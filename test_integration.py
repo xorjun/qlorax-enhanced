@@ -3,10 +3,10 @@
 Test InstructLab Integration - Windows Compatible Demo
 """
 
-import os
-import sys
 import json
+import os
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -18,12 +18,12 @@ def test_instructlab_integration():
     try:
         # Test 1: Import core packages
         print("Test 1: Checking core packages...")
+        import bert_score
+        import datasets
+        import rouge_score
+        import sentence_transformers
         import torch
         import transformers
-        import datasets
-        import sentence_transformers
-        import rouge_score
-        import bert_score
 
         print("  [SUCCESS] All core packages imported successfully")
 

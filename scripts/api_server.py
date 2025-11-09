@@ -4,11 +4,12 @@ Simple FastAPI server for QLORAX model deployment.
 This is a basic example of how to serve a fine-tuned model via API.
 """
 
+import os
+from typing import Optional
+
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import Optional
-import uvicorn
-import os
 
 app = FastAPI(
     title="QLORAX Model API",

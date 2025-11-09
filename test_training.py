@@ -3,12 +3,13 @@
 Minimal working fine-tuning test to identify potential issues
 """
 
-import os
 import json
+import os
+
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments
-from peft import LoraConfig, get_peft_model, TaskType
 from datasets import Dataset
+from peft import LoraConfig, TaskType, get_peft_model
+from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
 
 
 def minimal_training_test():

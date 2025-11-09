@@ -3,12 +3,12 @@
 Simple Enhanced Training Runner - Windows Compatible
 """
 
-import os
-import sys
 import json
+import os
 import subprocess
-from pathlib import Path
+import sys
 from datetime import datetime
+from pathlib import Path
 
 
 def run_enhanced_training(samples=10, domain="machine_learning"):

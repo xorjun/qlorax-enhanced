@@ -4,14 +4,15 @@
 A working demonstration of your fine-tuned model
 """
 
-import os
 import json
-import torch
+import os
 import time
 import warnings
 from pathlib import Path
-from transformers import AutoTokenizer, AutoModelForCausalLM
+
+import torch
 from peft import PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Suppress warnings for cleaner output
 warnings.filterwarnings("ignore", category=UserWarning)

@@ -4,10 +4,11 @@ Gradio interface for QLORAX model interaction.
 This provides a user-friendly web interface for testing your fine-tuned model.
 """
 
-import gradio as gr
-import requests
 import json
 from pathlib import Path
+
+import gradio as gr
+import requests
 
 # Global variables for model (placeholder until model is trained)
 model = None

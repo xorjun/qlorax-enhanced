@@ -4,11 +4,12 @@ Example script to validate Axolotl configuration and basic functionality.
 This script demonstrates how to load and validate the QLoRA configuration.
 """
 
-import yaml
-import torch
-from pathlib import Path
-from transformers import AutoTokenizer
 import sys
+from pathlib import Path
+
+import torch
+import yaml
+from transformers import AutoTokenizer
 
 
 def load_config(config_path):

@@ -4,14 +4,15 @@
 Comprehensive demonstration of fine-tuned model capabilities
 """
 
-import os
 import json
-import torch
-from pathlib import Path
-from datetime import datetime
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from peft import PeftModel
+import os
 import time
+from datetime import datetime
+from pathlib import Path
+
+import torch
+from peft import PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 class QLORAXDemo:

@@ -3,11 +3,12 @@
 Test the fine-tuned QLoRA model
 """
 
-import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from peft import PeftModel
 import sys
 from pathlib import Path
+
+import torch
+from peft import PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 def load_model():

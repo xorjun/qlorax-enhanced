@@ -4,8 +4,8 @@ QLORAX Project Setup Validation Script
 Tests that all core dependencies are working correctly.
 """
 
-import sys
 import importlib
+import sys
 from pathlib import Path
 
 
