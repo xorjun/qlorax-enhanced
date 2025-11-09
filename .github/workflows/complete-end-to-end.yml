@@ -12,8 +12,6 @@ on:
         - quick
         - enhanced  
         - production
-  push:
-    branches: [ main ]
 
 env:
   PYTHON_VERSION: '3.11'
@@ -69,7 +67,10 @@ jobs:
                 f.write(json.dumps(item) + '\n')
         
         print(f'Generated {len(sample_data)} samples in {data_path}')
-        print(f'::set-output name=data_path::{data_path}')
+        
+        # Use new environment file syntax instead of deprecated set-output
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+            f.write(f'data_path={data_path}\n')
         "
 
     - name: Data Statistics
@@ -91,7 +92,10 @@ jobs:
         
         stats = {'total_files': len(data_files), 'total_samples': total_samples}
         print(f'Total: {total_samples} samples across {len(data_files)} files')
-        print(f'::set-output name=stats::{json.dumps(stats)}')
+        
+        # Use new environment file syntax instead of deprecated set-output
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+            f.write(f'stats={json.dumps(stats)}\n')
         "
 
     - name: Upload Data Artifacts
